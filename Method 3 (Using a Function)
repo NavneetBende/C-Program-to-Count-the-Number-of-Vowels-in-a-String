@@ -1,0 +1,45 @@
+// Count Vowels using a function
+#include <stdio.h>
+#include <ctype.h>
+// toupper/tolower function is available in ctype.h header file
+
+int isVowel(char ch)
+{
+    // reduce number of or cases of upper / lower cases 
+    // by converting input char to lowercase or uppercase
+    ch = tolower(ch);
+    if (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u')
+        return 1;
+   
+   return 0;
+}
+int getVowelCount(char a[])
+{
+   int count = 0, i = 0;
+   char ch;
+   
+   while (a[i] != '\0'){  
+      ch = a[i];
+      
+      if (isVowel(ch))
+         count++;
+      i++;
+   }
+   return count;
+}
+
+
+int main()
+{
+   char str[100];
+
+   printf("Enter a string\n");
+   // best way to read string rather than gets/fgets
+   scanf("%[^\n]s",&str);
+    
+   // gets(str); do not use this
+   
+   printf("Total Vowels: %d\n", getVowelCount(str));
+   
+   return 0;
+}
