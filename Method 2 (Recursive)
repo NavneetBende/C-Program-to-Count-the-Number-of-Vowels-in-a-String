@@ -1,0 +1,31 @@
+#include <stdio.h>
+#include <ctype.h>
+#include <string.h>
+// toupper function is available in ctype.h header file
+
+// Function to check the Vowel
+int isVowel(char ch) 
+{
+    ch = toupper(ch);
+    return (ch == 'A' || ch == 'E' || ch == 'I' || ch == 'O' || ch == 'U');
+}
+
+// to count total number of vowel from 0 to n
+int countVowel(char str[], int n) 
+{
+    if (n == 1) 
+        return isVowel(str[n - 1]);
+    
+    return countVowel(str, n - 1) + isVowel(str[n - 1]);
+}
+
+int main() {
+    // string object
+    char str[10] = "Hey Dude";
+    
+    int len = strlen(str);
+    // Total numbers of Vowel
+    printf("%d", countVowel(str, len));
+    return 0;
+
+}
